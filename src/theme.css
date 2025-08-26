@@ -1,0 +1,96 @@
+/* Base tokens */
+:root {
+  /* superfícies */
+  --bg: #0b0d10;
+  --surface: #12161b;
+  --card: #161b22;
+  --overlay: #0b0d10cc;
+
+  /* texto */
+  --text: #e6edf3;
+  --muted: #9aa4b2;
+  --link: #7aa2ff;
+
+  /* bordas/linhas */
+  --line: #273142;
+
+  /* brand / acento */
+  --accent: #ff7a00;           /* seu laranja */
+  --accent-contrast: #0b0d10;
+
+  /* heatmap (0–5) — acessível em dark */
+  --heat-0: #1b1f27;
+  --heat-1: #223a3a;
+  --heat-2: #2d6a4f;
+  --heat-3: #52b788;
+  --heat-4: #b7e4c7;
+  --heat-5: #e6ffb3;
+
+  /* estados */
+  --ok: #26d07c;
+  --warn: #ffcc00;
+  --danger: #ff5d5d;
+
+  /* efeitos */
+  --ring: 0 0 0 2px var(--accent) / 0.4;
+}
+
+/* Tema claro */
+:root[data-theme="light"] {
+  --bg: #f6f8fa;
+  --surface: #ffffff;
+  --card: #ffffff;
+  --overlay: #00000022;
+
+  --text: #0b1420;
+  --muted: #475569;
+  --link: #2853ff;
+
+  --line: #e5e7eb;
+
+  /* Acento mantém o laranja */
+  --accent: #ff7a00;
+  --accent-contrast: #ffffff;
+
+  /* heatmap (0–5) — acessível em light */
+  --heat-0: #f1f5f9;
+  --heat-1: #cfe9ff;
+  --heat-2: #9fd0ff;
+  --heat-3: #6fb8ff;
+  --heat-4: #3fa0ff;
+  --heat-5: #0f88ff;
+}
+
+/* Reset básico do app usando tokens */
+html, body, #root { height: 100%; }
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Exemplo de elementos genéricos usando tokens */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.button {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  border: none;
+  border-radius: 999px;
+  padding: 10px 16px;
+}
+.button:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+}
+
+/* Heatmap classes (ajuste aos seus componentes) */
+.heat-0 { background: var(--heat-0); }
+.heat-1 { background: var(--heat-1); }
+.heat-2 { background: var(--heat-2); }
+.heat-3 { background: var(--heat-3); }
+.heat-4 { background: var(--heat-4); }
+.heat-5 { background: var(--heat-5); }

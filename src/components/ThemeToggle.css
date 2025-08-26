@@ -1,0 +1,49 @@
+.theme-toggle {
+  --h: 32px; --w: 64px; --p: 4px;
+  width: var(--w);
+  height: var(--h);
+  border-radius: 999px;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--card));
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--p);
+  position: relative;
+  cursor: pointer;
+  transition: background 200ms ease, border-color 200ms ease;
+}
+
+/* ícones: uma definição só */
+.theme-toggle .icon {
+  width: 18px; height: 18px;
+  opacity: .35;
+  stroke: hsl(var(--muted-foreground));
+  fill: none;
+  stroke-width: 1.5;
+}
+.theme-toggle .icon.sun circle { fill: hsl(var(--muted-foreground)); stroke: none; }
+.theme-toggle .icon.moon path  { fill: hsl(var(--muted-foreground)); stroke: none; }
+
+.theme-toggle .knob {
+  position: absolute;
+  top: 50%;
+  left: var(--p);
+  width: calc(var(--h) - var(--p) * 2);
+  height: calc(var(--h) - var(--p) * 2);
+  border-radius: 50%;
+  background: hsl(var(--primary));
+  transform: translate(0, -50%);
+  transition: transform 240ms cubic-bezier(.2,.8,.2,1), background 200ms ease;
+  box-shadow: 0 1px 2px #0003, 0 0 0 2px color-mix(in srgb, hsl(var(--primary)) 20%, transparent) inset;
+}
+.theme-toggle.on .knob { transform: translate(calc(var(--w) - var(--h)), -50%); }
+
+@media (prefers-reduced-motion: reduce) { .theme-toggle .knob { transition: none; } }
+.theme-toggle:focus-visible { outline: none; box-shadow: 0 0 0 2px hsl(var(--ring)); }
+
+/* destaca o ícone do tema atual */
+.theme-toggle.off .sun { opacity: 1; }  /* claro ativo */
+.theme-toggle.on  .moon { opacity: 1; }  /* escuro ativo */
+
+.theme-toggle:hover { background: color-mix(in srgb, hsl(var(--card)) 90%, hsl(var(--muted)) 10%); }
